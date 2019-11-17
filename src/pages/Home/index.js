@@ -87,9 +87,9 @@ class Home extends Component {
         this.setState({ products: data });
     };
 
-    handleAddProduct = item => {
-        const { addToCart } = this.props; // dispara as actions do redux
-        addToCart(item);
+    handleAddProduct = id => {
+        const { addToCartRequest } = this.props; // dispara as actions do redux
+        addToCartRequest(id);
     };
 
     renderProduct = ({ item }) => {
@@ -99,7 +99,7 @@ class Home extends Component {
                 <ProductImage source={{ uri: item.image }} />
                 <ProductTitle>{item.title}</ProductTitle>
                 <ProductPrice>{formatPrice(item.price)}</ProductPrice>
-                <AddButton onPress={() => this.handleAddProduct(item)}>
+                <AddButton onPress={() => this.handleAddProduct(item.id)}>
                     <ProductAmount>
                         <Icon name="add-shopping-cart" color="#FFF" size={20} />
                         <ProductAmountText>
